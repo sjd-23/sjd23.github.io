@@ -5,9 +5,8 @@ function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
-resizeCanvas(); // Initial sizing
+resizeCanvas();
 
-// Starfield config
 const starLayerConfig = [
     { speed: 0.5, count: 300 },
     { speed: 1.0, count: 400 },
@@ -47,7 +46,7 @@ class Star {
         this.px = this.x * scale + width / 2;
         this.py = this.y * scale + height / 2;
 
-        this.opacity = Math.min(1, this.opacity + dt * 2); // fades in smoothly
+        this.opacity = Math.min(1, this.opacity + dt * 2);
     }
 
     draw() {
