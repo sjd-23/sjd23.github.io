@@ -1,11 +1,82 @@
+/* =================== BASE =================== */
+
 html, body {
     height: 100%;
+    margin: 0;
+    user-select: none;
+    overflow: hidden;
 }
 
 body {
     background: rgb(19, 19, 19);
-    margin: 0;
     color: rgb(255, 255, 255);
-    user-select: none;
-    overflow: hidden;
+}
+
+/* =================== TYPOGRAPHY =================== */
+
+@font-face {
+    font-family: 'CaviarDreams';
+    src: url('../assets/fonts/CaviarDreams.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CaviarDreams';
+    src: url('../assets/fonts/CaviarDreams_Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* =================== HEADER =================== */
+
+header {
+    position: fixed;
+    font-family: 'CaviarDreams', Arial, sans-serif;
+    font-weight: bold;
+    top: 40%;
+    left: 2%;
+    font-size: 3rem;
+    opacity: 0;
+    animation: fadeInHeader 0.5s forwards 0.25s;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.header-content {
+    font-size: 3rem;
+    white-space: pre;
+    animation: fadeInText 0.5s ease-in-out;
+}
+
+.header-copywrite {
+    font-size: 0.9rem;
+    color: rgb(195, 195, 195);
+    opacity: 0;
+    margin-top: 5px;
+    line-height: 0;
+    animation: fadeInText 0.5s ease-in-out forwards 0.5s;
+}
+
+/* =================== ANIMATIONS =================== */
+
+@keyframes fadeInHeader {
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
