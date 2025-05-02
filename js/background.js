@@ -81,7 +81,7 @@ function animate(dt) {
 
 let lastTime = performance.now();
 function loop(now) {
-    const dt = (now - lastTime) / 1000; // seconds
+    const dt = (now - lastTime) / 1000;
     lastTime = now;
     animate(dt);
     requestAnimationFrame(loop);
