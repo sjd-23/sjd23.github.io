@@ -18,7 +18,6 @@ const TWO_PI = Math.PI * 2;
 
 class Star {
     constructor(layerIndex, config) {
-        this.layerIndex = layerIndex;
         this.speed = config.speed;
         this.reset(true);
     }
