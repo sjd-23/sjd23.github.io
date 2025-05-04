@@ -80,10 +80,26 @@ header {
     font-weight: bold;
     top: 40%;
     padding-left: 2vw;
-    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     opacity: 0;
     animation: fadeInHeader 0.5s forwards 0.25s;
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.header-box {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.015);
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.06) 0,
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px,
+            transparent 6px
+    );
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(2px);
 }
 
 .header-content {
@@ -93,7 +109,7 @@ header {
 }
 
 .header-copywrite {
-    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    font-size: clamp(0.5rem, 2vw, 0.7rem);
     color: rgb(195, 195, 195);
     opacity: 0;
     margin-top: 5px;
@@ -119,6 +135,13 @@ header {
     text-shadow: none;
     padding: 4px 10px;
     border-radius: 0;
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.06) 0,
+            rgba(0, 0, 0, 0.06) 1px,
+            transparent 1px,
+            transparent 6px
+    );
 }
 
 .header-links a:hover {
