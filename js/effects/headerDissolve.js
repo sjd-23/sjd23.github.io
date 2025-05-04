@@ -1,7 +1,7 @@
 export function startHeaderDissolveEffect(element, asciiCharacters, colors) {
     const finalText = element.dataset.text;
     let iterations = 0;
-    const maxIterations = 50;
+    const maxIterations = 85;
 
     const dissolveInterval = setInterval(() => {
         iterations++;
@@ -13,7 +13,7 @@ export function startHeaderDissolveEffect(element, asciiCharacters, colors) {
 
             if (Math.random() < iterations / maxIterations) {
                 char = finalText[i];
-                color = "#ffffff";
+                color = "#f4f4f4";
             } else {
                 char = asciiCharacters[Math.floor(Math.random() * asciiCharacters.length)];
                 color = colors[Math.floor(Math.random() * colors.length)];
@@ -39,25 +39,23 @@ function startRandomFlickers(element, finalText, asciiCharacters, colors) {
 }
 
 function startRandomFlicker(element, finalText, asciiCharacters, colors) {
-    const randomInterval = Math.random() * 3000 + 1000;
+    const randomInterval = Math.random() * 1000 + 1000;
 
     setInterval(() => {
         const chars = Array.from(finalText);
         const randomIndex = Math.floor(Math.random() * chars.length);
-
-        const flickerChar = asciiCharacters[Math.floor(Math.random() * asciiCharacters.length)];
-        chars[randomIndex] = flickerChar;
+        chars[randomIndex] = asciiCharacters[Math.floor(Math.random() * asciiCharacters.length)];
 
         element.innerHTML = chars
             .map((char, index) =>
-                `<span style="color: ${index === randomIndex ? colors[Math.floor(Math.random() * colors.length)] : "#ffffff"}">${char}</span>`
+                `<span style="color: ${index === randomIndex ? colors[Math.floor(Math.random() * colors.length)] : "#f4f4f4"}">${char}</span>`
             )
             .join("");
 
         setTimeout(() => {
             chars[randomIndex] = finalText[randomIndex];
             element.innerHTML = chars
-                .map((char) => `<span style="color: #ffffff">${char}</span>`)
+                .map((char) => `<span style="color: #f4f4f4">${char}</span>`)
                 .join("");
         }, 100);
     }, randomInterval);
