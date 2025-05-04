@@ -1,6 +1,8 @@
 export function startStarfield(canvas) {
     const ctx = canvas.getContext("2d");
     const TWO_PI = Math.PI * 2;
+    const BASE_AREA = 1920 * 1080;
+    const MAX_Z = 1920;
 
     const config = {
         layers: [
@@ -25,7 +27,7 @@ export function startStarfield(canvas) {
             this.speed = layer.speed;
             this.color = getWeightedRandomColor(config.colors);
             this.size = Math.random() + 0.1;
-            this.reset(true);
+            this.reset();
         }
 
         reset() {
@@ -33,7 +35,11 @@ export function startStarfield(canvas) {
             const h = canvas.height;
             this.x = Math.random() * w - w / 2;
             this.y = Math.random() * h - h / 2;
-            this.z = Math.random() * canvas.width;
+
+            const zMin = this.speed < 0.5 ? MAX_Z * 0.6 : MAX_Z * 0.2;
+            const zMax = this.speed < 0.5 ? MAX_Z : MAX_Z * 0.8;
+            this.z = Math.random() * (zMax - zMin) + zMin;
+
             this.opacity = 0;
         }
 
@@ -72,9 +78,8 @@ export function startStarfield(canvas) {
         }
     }
 
-    const BASE_WIDTH = 1920;
     function getScale(z) {
-        return BASE_WIDTH / Math.max(0.01, z);
+        return MAX_Z / Math.max(0.01, z);
     }
 
     function hexToRGBA(hex, alpha) {
@@ -97,8 +102,7 @@ export function startStarfield(canvas) {
     function createStars() {
         stars.length = 0;
         const screenArea = canvas.width * canvas.height;
-        const baseArea = 1920 * 1080;
-        const scaleFactor = screenArea / baseArea;
+        const scaleFactor = (screenArea / BASE_AREA) * window.devicePixelRatio * 1.25;
 
         config.layers.forEach(layer => {
             const scaledCount = Math.round(layer.count * scaleFactor);
@@ -134,5 +138,8 @@ export function startStarfield(canvas) {
     }
 
     requestAnimationFrame(loop);
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", () => {
+        resizeCanvas();
+        createStars();
+    });
 }
