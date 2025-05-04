@@ -4,9 +4,9 @@ export function startStarfield(canvas) {
 
     const config = {
         layers: [
-            { speed: 0.15, count: 500 },
-            { speed: 1.0, count: 850 },
-            { speed: 1.75, count: 200 },
+            { speed: 0.15, count: 950 },
+            { speed: 1.0, count: 1500 },
+            { speed: 1.75, count: 450 },
         ],
         colors: [
             { color: "#aabfff", weight: 3 },
@@ -54,7 +54,6 @@ export function startStarfield(canvas) {
             const scale = getScale(this.z);
             const size = Math.min(this.size * scale, 2);
             const glowSize = size * 0.5;
-
             const glowColor = hexToRGBA(this.color, this.opacity * 0.3);
             const coreColor = hexToRGBA(this.color, this.opacity);
 
@@ -73,8 +72,9 @@ export function startStarfield(canvas) {
         }
     }
 
+    const BASE_WIDTH = 1920;
     function getScale(z) {
-        return canvas.width / Math.max(0.01, z);
+        return BASE_WIDTH / Math.max(0.01, z);
     }
 
     function hexToRGBA(hex, alpha) {
@@ -96,8 +96,13 @@ export function startStarfield(canvas) {
 
     function createStars() {
         stars.length = 0;
+        const screenArea = canvas.width * canvas.height;
+        const baseArea = 1920 * 1080;
+        const scaleFactor = screenArea / baseArea;
+
         config.layers.forEach(layer => {
-            for (let i = 0; i < layer.count; i++) {
+            const scaledCount = Math.round(layer.count * scaleFactor);
+            for (let i = 0; i < scaledCount; i++) {
                 stars.push(new Star(layer));
             }
         });
@@ -117,8 +122,8 @@ export function startStarfield(canvas) {
         }
     }
 
-    createStars();
     resizeCanvas();
+    createStars();
 
     let lastTime = performance.now();
     function loop(now) {
