@@ -1,4 +1,4 @@
-import { startStarfield } from '../backgrounds/space.js'; // Choose background here
+import { startStarfield } from '../backgrounds/space.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("background");
