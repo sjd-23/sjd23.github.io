@@ -18,3 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startHeaderDissolveEffect(dissolveTextElement, asciiCharacters, colors);
 });
+
+document.querySelectorAll('.header-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        link.blur();
+    });
+});
