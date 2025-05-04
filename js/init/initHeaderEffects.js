@@ -3,7 +3,7 @@ import { startHeaderDissolveEffect } from "../effects/headerDissolve.js";
 document.addEventListener("DOMContentLoaded", () => {
     const dissolveTextElement = document.getElementById("header-title");
     const asciiCharacters =
-        "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~•●○◯◌♦◇";
+        "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
     const colors = [
         "#08f7fe", "#00f0ff", "#00e5ff", "#00d2ff", "#00c3ff",
         "#ff2d95", "#ff00c8", "#ff4da6", "#ff66cc", "#ff9ff3",
